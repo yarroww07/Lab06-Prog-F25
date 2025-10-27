@@ -39,16 +39,37 @@ dataset['GNI per capita'] = dataset['GNI']/dataset['Population']
 #country_count = filtered_data.sum()
 #print(filtered_data)
 
+
+
 ### PART 4 ###
 
 #1# Plot of GNI per capita vs Life Expectancy of each gender
 #Females
 sns.relplot(data= dataset, 
-            x='Life expectancy, female', y= 'GNI per capita')
+            x='Life expectancy, female', 
+            y= 'GNI per capita')
 
 #Males
 sns.relplot(data= dataset,
-            x='Life expectancy, male', y='GNI per capita')
+            x='Life expectancy, male', 
+            y='GNI per capita')
 
 # Answer: The is a relationship between GNI per capita and life expectancy. The higher the life expectancy, the higher 
 #         the GNI per capita. 
+
+
+#2# Plot of GNI per capita vs life expectancy of each gender, depending on the region.
+#Females
+sns.relplot(data= dataset, 
+            x='Life expectancy, female',
+            y= 'GNI per capita',
+            hue= 'Region')
+
+#Males 
+sns.relplot(data= dataset,
+            x='Life expectancy, male', 
+            y='GNI per capita',
+            hue= 'Region')
+# Answer: The association between GNI per capita and life expectancy does vary for each region. For instance, Africa seem
+#         to have a lower life expectancy along with Oceania. While for Asia, it is between average and high, increasing
+#         across life expectancy. While both Americas and Europe have their GNI per capita increasimg over age. 
