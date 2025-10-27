@@ -1,3 +1,6 @@
+
+
+
 ### PART 3 ###
 # Question 1: What is the average international tourism per region?
 # Question 2: Which sex (male vs female) has the highest life expectancy in Africa?
@@ -30,10 +33,22 @@ dataset['GNI per capita'] = dataset['GNI']/dataset['Population']
 # print(dataset.columns)
 
 
-country_count = 0
+#country_count = 0
 
-filtered_data = dataset[dataset['Life expectancy, female'] > 80]
-country_count = filtered_data.sum()
-print(filtered_data)
+#filtered_data = dataset[dataset['Life expectancy, female'] > 80]
+#country_count = filtered_data.sum()
+#print(filtered_data)
 
 ### PART 4 ###
+
+#1# Plot of GNI per capita vs Life Expectancy of each gender
+#Females
+sns.relplot(data= dataset, 
+            x='Life expectancy, female', y= 'GNI per capita')
+
+#Males
+sns.relplot(data= dataset,
+            x='Life expectancy, male', y='GNI per capita')
+
+# Answer: The is a relationship between GNI per capita and life expectancy. The higher the life expectancy, the higher 
+#         the GNI per capita. 
