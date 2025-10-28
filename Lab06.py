@@ -1,7 +1,9 @@
+# Rania Bouladraf
+# Meriem Hamzi
 
 
-
-### PART 3 ###
+                                              ### PART 3 ###
+                                              
 # Question 1: What is the average international tourism per region?
 # Question 2: Which sex (male vs female) has the highest life expectancy in Africa?
 # Question 3: Which intermediate region has the highest GNI?
@@ -41,7 +43,8 @@ dataset['GNI per capita'] = dataset['GNI']/dataset['Population']
 
 
 
-### PART 4 ###
+
+                                                   ### PART 4 ###
 
 #1# Plot of GNI per capita vs Life Expectancy of each gender
 #Females
@@ -85,10 +88,8 @@ sns.relplot(data= dataset,
 #         the emissions per capita increase as well.
 
 #b)
-filtered_data = dataset[dataset['Emissions per capita'] > 0.03]
-print(pd.crosstab(filtered_data, dataset['Country Name']))
-sns.relplot(data= dataset,
-            x='Internet use', 
-            y= 'Emissions per capita',
-            hue= 'Region')
+
+
+#c)
+
 
