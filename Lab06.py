@@ -73,3 +73,13 @@ sns.relplot(data= dataset,
 # Answer: The association between GNI per capita and life expectancy does vary for each region. For instance, Africa seem
 #         to have a lower life expectancy along with Oceania. While for Asia, it is between average and high, increasing
 #         across life expectancy. While both Americas and Europe have their GNI per capita increasimg over age. 
+
+
+#6#
+#a)
+dataset['Emissions per capita'] = dataset['Greenhouse gas emissions']/dataset['Population'] # Adding of a new column
+sns.relplot(data= dataset, 
+            x='Internet use',
+            y= 'Emissions per capita')
+# Answer: Yes, there is an association between internet use and emissions per capita. In fact, as internet use increases
+#         the emissions per capita increase as well.
