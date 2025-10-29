@@ -77,13 +77,114 @@ sns.relplot(data= dataset,
 #         to have a lower life expectancy along with Oceania. While for Asia, it is between average and high, increasing
 #         across life expectancy. While both Americas and Europe have their GNI per capita increasimg over age. 
 
+#3#
+
+sns.relplot(data = dataset,
+            x='GNI per capita',
+            y='Life expectancy, female',
+            kind='line',
+            hue='Region',
+            errorbar='sd')
+
+sns.relplot(data = dataset,
+            x='GNI per capita',
+            y='Life expectancy, male',
+            kind='line',
+            hue='Region',
+            errorbar='sd')
+
+
+#4#
+sns.lmplot(data=dataset,
+           x='GNI per capita',
+           y='Life expectancy, female',
+           hue='Region')
+
+sns.lmplot(data=dataset,
+           x='GNI per capita',
+           y='Life expectancy, male',
+           hue='Region')
+
+#5#
+#%%
+import seaborn as sns
+import pandas as pd
+dataset = pd.read_csv("wdi_wide.csv")
+dataset['GNI per capita'] = dataset['GNI']/dataset['Population']
+#   Question 1: Is there a relation between female life expectancy and the level of education for females? 
+sns.relplot(data = dataset, 
+            x='Tertiary education, female',
+            y='Life expectancy, female',
+            hue='Region')
+
+sns.relplot(data = dataset, 
+            x='Tertiary education, female',
+            y='Life expectancy, female',
+            col='Region')
+
+# Answer: Female life expectancy is associated with the level of tertiary education for females. A higher level of education
+#         is indicative of a higher female life expectancy.
+
+#   Question 2: Is there a relation between female life expectancy and the amount of women in national parliament?
+sns.relplot(data = dataset, 
+            x='Women in national parliament',
+            y='Life expectancy, female',
+            hue='Region')
+
+sns.relplot(data = dataset, 
+            x='Women in national parliament',
+            y='Life expectancy, female',
+            col='Region')
+#   Answer: There does not seem to be a clear relation between female life expectancy and the amount of women in the national
+#           parliament. 
+
+#   Question 3: Is there a relation between female life expectancy and the number of physicians in a country?
+sns.relplot(data = dataset, 
+            x='Women in national parliament',
+            y='Life expectancy, female',
+            hue='Region')
+
+sns.relplot(data = dataset, 
+            x='Women in national parliament',
+            y='Life expectancy, female',
+            col='Region')
+#   Answer: There seems to be a very slight relation between female life expectancy and the amount of physicians.
+
+#   Question 4: Is there a relation between female life expectancy and the amount of greenhouse emissions?
+sns.relplot(data = dataset, 
+            x='Greenhouse gas emissions',
+            y='Life expectancy, female',
+            hue='Region')
+
+sns.relplot(data = dataset, 
+            x='Greenhouse gas emissions',
+            y='Life expectancy, female',
+            col='Region')
+
+#   Answer: There is no relation between female life expectancy and greenhouse gas emissions.
+
+#   Question 5: Is there a relation between female life expectancy and the usage of internet? 
+sns.relplot(data = dataset, 
+            x='Internet use',
+            y='Life expectancy, female',
+            hue='Region')
+
+sns.relplot(data = dataset, 
+            x='Internet use',
+            y='Life expectancy, female',
+            col='Region')
+
+#   Answer: According to the graph, there is a relation with female life expectancy and the usage of internet. 
+#%%
+
 
 #6#
 #a)
 dataset['Emissions per capita'] = dataset['Greenhouse gas emissions']/dataset['Population'] # Adding of a new column
-sns.relplot(data= dataset,
+sns.relplot(data = dataset,
            x='Internet use', 
-           y='Emissions per capita')
+           y='Emissions per capita',
+           hue='Region')
 # Answer: Yes, there is an association between internet use and emissions per capita. In fact, as internet use increases
 #         the emissions per capita increase as well.
 
@@ -101,3 +202,7 @@ sns.relplot(data= dataset,
 #d)
 print(pd.crosstab(High_emissions['High Income Economy'], High_emissions['Emissions per capita']))
 # Answer: No, only two high economies have high emissions (???)
+
+
+
+# %%
