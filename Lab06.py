@@ -88,7 +88,9 @@ sns.relplot(data= dataset,
 #         the emissions per capita increase as well.
 
 #b)
-
+High_emissions = dataset[dataset['Emissions per capita'] > 0.03]
+print(pd.crosstab(High_emissions['Country Name'], High_emissions['Emissions per capita']))
+# Answer: The countries with high emssions (above 0.03) are Brunei Darussalam (0.03799) and Qatar (0.03465)
 
 #c)
 
