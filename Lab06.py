@@ -93,5 +93,11 @@ print(pd.crosstab(High_emissions['Country Name'], High_emissions['Emissions per 
 # Answer: The countries with high emssions (above 0.03) are Brunei Darussalam (0.03799) and Qatar (0.03465)
 
 #c)
+sns.relplot(data= dataset,
+           x='Internet use', 
+           y='Emissions per capita',
+           hue= 'Region')
 
-
+#d)
+print(pd.crosstab(High_emissions['High Income Economy'], High_emissions['Emissions per capita']))
+# Answer: No, only two high economies have high emissions (???)
