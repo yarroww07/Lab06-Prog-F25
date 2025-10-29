@@ -49,13 +49,13 @@ dataset['GNI per capita'] = dataset['GNI']/dataset['Population']
 #1# Plot of GNI per capita vs Life Expectancy of each gender
 #Females
 sns.relplot(data= dataset, 
-            x='Life expectancy, female', 
-            y= 'GNI per capita')
+            y='Life expectancy, female', 
+            x= 'GNI per capita')
 
 #Males
 sns.relplot(data= dataset,
-          x='Life expectancy, male', 
-          y='GNI per capita')
+          y='Life expectancy, male', 
+          x='GNI per capita')
 
 # Answer: The is a relationship between GNI per capita and life expectancy. The higher the life expectancy, the higher 
 #         the GNI per capita. 
@@ -64,14 +64,14 @@ sns.relplot(data= dataset,
 #2# Plot of GNI per capita vs life expectancy of each gender, depending on the region.
 #Females
 sns.relplot(data= dataset,
-           x='Life expectancy, female', 
-           y='GNI per capita',
+           y='Life expectancy, female', 
+           x='GNI per capita',
            hue= 'Region')
 
 #Males 
 sns.relplot(data= dataset,
-           x='Life expectancy, male', 
-           y='GNI per capita',
+           y='Life expectancy, male', 
+           x='GNI per capita',
            hue= 'Region')
 # Answer: The association between GNI per capita and life expectancy does vary for each region. For instance, Africa seem
 #         to have a lower life expectancy along with Oceania. While for Asia, it is between average and high, increasing
@@ -82,8 +82,8 @@ sns.relplot(data= dataset,
 #a)
 dataset['Emissions per capita'] = dataset['Greenhouse gas emissions']/dataset['Population'] # Adding of a new column
 sns.relplot(data= dataset,
-           x='Internet use', 
-           y='Emissions per capita')
+           x='Emissions per capita', 
+           y='Internet use')
 # Answer: Yes, there is an association between internet use and emissions per capita. In fact, as internet use increases
 #         the emissions per capita increase as well.
 
@@ -94,10 +94,18 @@ print(pd.crosstab(High_emissions['Country Name'], High_emissions['Emissions per 
 
 #c)
 sns.relplot(data= dataset,
-           x='Internet use', 
-           y='Emissions per capita',
-           hue= 'Region')
+           x= High_emissions['Emissions per capita'], 
+           y= High_emissions['Internet use'],
+           hue= High_emissions['Country Name'],
+           col= High_emissions['Region'])
+# Answer: There are only two countries in one region (Asia) that have high emissons, therefore there are no 
+#         variations between the different region.
 
 #d)
+High_incomes = dataset[dataset['High Income Economy'] == 1]
+print(pd.crosstab(High_incomes['Emissions per capita'], High_incomes['Country Name']))
+print('Here are the two high economies which have high emissions')
+print(High_emissions['Country Name'])
 print(pd.crosstab(High_emissions['High Income Economy'], High_emissions['Emissions per capita']))
-# Answer: No, only two high economies have high emissions (???)
+# Answer: The two countries which have high emissions are High income economies. However, this means that not all
+#         High economy conutries have a high emissions.
