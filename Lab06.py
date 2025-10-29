@@ -17,29 +17,33 @@ import seaborn as sns
 
 dataset = pd.read_csv("wdi_wide.csv")
 
-# print(dataset.info())
+print(dataset.info())
  
 # Physician = 10 null values 
 # Population = 0 null values 
 
-# print(dataset.nunique())
-# print(dataset.describe())
+print(dataset.nunique())
+print(dataset.describe())
 # It provides statistical information for each column (count, mean, standard deviation, quartiles, minimum and maximum)
 
 dataset['GNI per capita'] = dataset['GNI']/dataset['Population']
-# print(dataset['GNI per capita'].round())
+print(dataset['GNI per capita'].round())
 
-# print(dataset.value_counts('Region'))
-# print(dataset.value_counts('High Income Economy'))
-# print(pd.crosstab(dataset['Region'], dataset['High Income Economy']))
-# print(dataset.columns)
+print(dataset.value_counts('Region'))
+print(dataset.value_counts('High Income Economy'))
+print(pd.crosstab(dataset['Region'], dataset['High Income Economy']))
+print(dataset.columns)
 
 
-#country_count = 0
-
-#filtered_data = dataset[dataset['Life expectancy, female'] > 80]
-#country_count = filtered_data.sum()
-#print(filtered_data)
+country_count = 0
+filtered_data = []
+for value, row in dataset.iterrows():
+    if row['Life expectancy, female'] > 80:
+        filtered_data += [row['Country Name']]
+        country_count += 1
+print('There are',country_count, 'countries with female life expectancy greater 80:')
+print(filtered_data)
+     
 
 
 
@@ -49,13 +53,13 @@ dataset['GNI per capita'] = dataset['GNI']/dataset['Population']
 #1# Plot of GNI per capita vs Life Expectancy of each gender
 #Females
 sns.relplot(data= dataset, 
-            x='Life expectancy, female', 
-            y= 'GNI per capita')
+            y='Life expectancy, female', 
+            x= 'GNI per capita')
 
 #Males
 sns.relplot(data= dataset,
-          x='Life expectancy, male', 
-          y='GNI per capita')
+          y='Life expectancy, male', 
+          x='GNI per capita')
 
 # Answer: The is a relationship between GNI per capita and life expectancy. The higher the life expectancy, the higher 
 #         the GNI per capita. 
@@ -64,14 +68,14 @@ sns.relplot(data= dataset,
 #2# Plot of GNI per capita vs life expectancy of each gender, depending on the region.
 #Females
 sns.relplot(data= dataset,
-           x='Life expectancy, female', 
-           y='GNI per capita',
+           y='Life expectancy, female', 
+           x='GNI per capita',
            hue= 'Region')
 
 #Males 
 sns.relplot(data= dataset,
-           x='Life expectancy, male', 
-           y='GNI per capita',
+           y='Life expectancy, male', 
+           x='GNI per capita',
            hue= 'Region')
 # Answer: The association between GNI per capita and life expectancy does vary for each region. For instance, Africa seem
 #         to have a lower life expectancy along with Oceania. While for Asia, it is between average and high, increasing
@@ -106,11 +110,7 @@ sns.lmplot(data=dataset,
            hue='Region')
 
 #5#
-#%%
-import seaborn as sns
-import pandas as pd
-dataset = pd.read_csv("wdi_wide.csv")
-dataset['GNI per capita'] = dataset['GNI']/dataset['Population']
+
 #   Question 1: Is there a relation between female life expectancy and the level of education for females? 
 sns.relplot(data = dataset, 
             x='Tertiary education, female',
@@ -175,16 +175,21 @@ sns.relplot(data = dataset,
             col='Region')
 
 #   Answer: According to the graph, there is a relation with female life expectancy and the usage of internet. 
-#%%
 
 
 #6#
 #a)
 dataset['Emissions per capita'] = dataset['Greenhouse gas emissions']/dataset['Population'] # Adding of a new column
+<<<<<<< HEAD
 sns.relplot(data = dataset,
            x='Internet use', 
            y='Emissions per capita',
            hue='Region')
+=======
+sns.relplot(data= dataset,
+           x='Emissions per capita', 
+           y='Internet use')
+>>>>>>> b086e284cc8c0ee7704aabcdca8d658033108389
 # Answer: Yes, there is an association between internet use and emissions per capita. In fact, as internet use increases
 #         the emissions per capita increase as well.
 
@@ -195,14 +200,26 @@ print(pd.crosstab(High_emissions['Country Name'], High_emissions['Emissions per 
 
 #c)
 sns.relplot(data= dataset,
-           x='Internet use', 
-           y='Emissions per capita',
-           hue= 'Region')
+           x= High_emissions['Emissions per capita'], 
+           y= High_emissions['Internet use'],
+           hue= High_emissions['Country Name'],
+           col= High_emissions['Region'])
+# Answer: There are only two countries in one region (Asia) that have high emissons, therefore there are no 
+#         variations between the different region.
 
 #d)
+High_incomes = dataset[dataset['High Income Economy'] == 1]
+print(pd.crosstab(High_incomes['Emissions per capita'], High_incomes['Country Name']))
+print('Here are the two high economies which have high emissions')
+print(High_emissions['Country Name'])
 print(pd.crosstab(High_emissions['High Income Economy'], High_emissions['Emissions per capita']))
+<<<<<<< HEAD
 # Answer: No, only two high economies have high emissions (???)
 
 
 
-# %%
+
+=======
+# Answer: The two countries which have high emissions are High income economies. However, this means that not all
+#         High economy conutries have a high emissions.
+>>>>>>> b086e284cc8c0ee7704aabcdca8d658033108389
