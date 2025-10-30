@@ -180,16 +180,16 @@ sns.relplot(data = dataset,
 #6#
 #a)
 dataset['Emissions per capita'] = dataset['Greenhouse gas emissions']/dataset['Population'] # Adding of a new column
-<<<<<<< HEAD
+
 sns.relplot(data = dataset,
            x='Internet use', 
            y='Emissions per capita',
            hue='Region')
-=======
+
 sns.relplot(data= dataset,
            x='Emissions per capita', 
            y='Internet use')
->>>>>>> b086e284cc8c0ee7704aabcdca8d658033108389
+
 # Answer: Yes, there is an association between internet use and emissions per capita. In fact, as internet use increases
 #         the emissions per capita increase as well.
 
@@ -213,13 +213,7 @@ print(pd.crosstab(High_incomes['Emissions per capita'], High_incomes['Country Na
 print('Here are the two high economies which have high emissions')
 print(High_emissions['Country Name'])
 print(pd.crosstab(High_emissions['High Income Economy'], High_emissions['Emissions per capita']))
-<<<<<<< HEAD
-# Answer: No, only two high economies have high emissions (???)
 
-
-
-
-=======
 # Answer: The two countries which have high emissions are High income economies. However, this means that not all
 #         High economy conutries have a high emissions.
->>>>>>> b086e284cc8c0ee7704aabcdca8d658033108389
+
