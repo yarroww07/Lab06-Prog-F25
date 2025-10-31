@@ -61,6 +61,7 @@ sns.relplot(data= dataset,
           y='Life expectancy, male', 
           x='GNI per capita')
 
+
 # Answer: The is a relationship between GNI per capita and life expectancy. The higher the life expectancy, the higher 
 #         the GNI per capita. 
 
@@ -81,8 +82,9 @@ sns.relplot(data= dataset,
 #         to have a lower life expectancy along with Oceania. While for Asia, it is between average and high, increasing
 #         across life expectancy. While both Americas and Europe have their GNI per capita increasimg over age. 
 
-#3#
+#3# Plot of GNI per capita vs life expectancy of each gender, depending on the region, adding standard deviation.
 
+#Females
 sns.relplot(data = dataset,
             x='GNI per capita',
             y='Life expectancy, female',
@@ -90,6 +92,7 @@ sns.relplot(data = dataset,
             hue='Region',
             errorbar='sd')
 
+#Males
 sns.relplot(data = dataset,
             x='GNI per capita',
             y='Life expectancy, male',
@@ -98,25 +101,29 @@ sns.relplot(data = dataset,
             errorbar='sd')
 
 
-#4#
+#4# Linear regression plot of GNI per capita vs life expectancy of each gender, depending on the region.
+#Females
 sns.lmplot(data=dataset,
            x='GNI per capita',
            y='Life expectancy, female',
            hue='Region')
 
+#Males
 sns.lmplot(data=dataset,
            x='GNI per capita',
            y='Life expectancy, male',
            hue='Region')
 
-#5#
+#5# Relationship between female life expectancy and other variables.
 
 #   Question 1: Is there a relation between female life expectancy and the level of education for females? 
+#Relationship
 sns.relplot(data = dataset, 
             x='Tertiary education, female',
             y='Life expectancy, female',
             hue='Region')
 
+#Faceting
 sns.relplot(data = dataset, 
             x='Tertiary education, female',
             y='Life expectancy, female',
@@ -125,12 +132,15 @@ sns.relplot(data = dataset,
 # Answer: Female life expectancy is associated with the level of tertiary education for females. A higher level of education
 #         is indicative of a higher female life expectancy.
 
+
 #   Question 2: Is there a relation between female life expectancy and the amount of women in national parliament?
+#Relationship
 sns.relplot(data = dataset, 
             x='Women in national parliament',
             y='Life expectancy, female',
             hue='Region')
 
+#Faceting
 sns.relplot(data = dataset, 
             x='Women in national parliament',
             y='Life expectancy, female',
@@ -139,23 +149,29 @@ sns.relplot(data = dataset,
 #           parliament. 
 
 #   Question 3: Is there a relation between female life expectancy and the number of physicians in a country?
+#Relationship
 sns.relplot(data = dataset, 
-            x='Women in national parliament',
+            x='Physicians',
             y='Life expectancy, female',
             hue='Region')
 
+#Faceting
 sns.relplot(data = dataset, 
-            x='Women in national parliament',
+            x='Physicians',
             y='Life expectancy, female',
             col='Region')
+
+
 #   Answer: There seems to be a very slight relation between female life expectancy and the amount of physicians.
 
 #   Question 4: Is there a relation between female life expectancy and the amount of greenhouse emissions?
+#Relationship
 sns.relplot(data = dataset, 
             x='Greenhouse gas emissions',
             y='Life expectancy, female',
             hue='Region')
 
+#Faceting
 sns.relplot(data = dataset, 
             x='Greenhouse gas emissions',
             y='Life expectancy, female',
@@ -164,11 +180,13 @@ sns.relplot(data = dataset,
 #   Answer: There is no relation between female life expectancy and greenhouse gas emissions.
 
 #   Question 5: Is there a relation between female life expectancy and the usage of internet? 
+#Relationship
 sns.relplot(data = dataset, 
             x='Internet use',
             y='Life expectancy, female',
             hue='Region')
 
+#Faceting
 sns.relplot(data = dataset, 
             x='Internet use',
             y='Life expectancy, female',
